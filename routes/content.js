@@ -7,6 +7,8 @@ const router = new express.Router();
 
 // TODO: add other dependencies for rendering content
 
+const Content = require('..models/content.js');
+
 // get route (refine according to API requirements)
 router.get('/', (req, res) => {
     if(req.query.id) {
