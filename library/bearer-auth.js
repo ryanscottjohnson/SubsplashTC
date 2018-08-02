@@ -1,21 +1,19 @@
 'use strict';
 
-const jws = require('jsonwebtoken');
+let jws = require('jsonwebtoken');
 
 function bearerAuth(req, res, next) {
-    if (!req.headers.authorization) {
-        res.status(401);
-        res.send('Not authorized');
-        res.end();
-        return;
-    }
+    console.log('bearer function working');
     var authHeader = req.headers.authorization;
     var token = authHeader.split('Bearer ')[1];
-    jws.verify(token, process.env.APP_SECRET, (err, decoded) => {
+    console.log('token', token);
+
+    jws.verify(token, process.env.SECRET, (err, decoded) => {
         if (err) {
-            return next(err);
+            res.send('forbidden');
+            return;
         }
     });
-}
+};
 
-module.exports = bearerAuth;
+module.exports = { bearerAuth };
