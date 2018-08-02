@@ -17,8 +17,6 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-
 app.get('/api', (req, res) => {
     // res.json('index.html');
     res.json({
