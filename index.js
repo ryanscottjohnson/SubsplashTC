@@ -4,16 +4,10 @@ require('dotenv').config('express');
 
 const express = require('express');
 const superAgent = require('superagent');
-// Do I really need mongoose??
-// const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const pg = require('pg');
+// const pg = require('pg');
 const cors = require('cors');
 const bearerAuth = require('./library/bearer-auth.js');
-
-// MongoClient.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
-// mongoose.connect('mongodb://localhost:3000', { useNewUrlParser: true });
-// mongoose.connect(process.env.MONGODB_URI);
 
 const PORT = process.env.PORT || 3000;
 const app = express();
