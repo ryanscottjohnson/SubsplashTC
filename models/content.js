@@ -2,8 +2,7 @@
 
 const mongoose = require('mongoose');
 
-// TODO: check API for specifics on content Schema tags
-const contentSchema = new mongoose.Schema({
+let contentSchema = new mongoose.Schema({
     id: String,
     title: String,
     duration: Number,
