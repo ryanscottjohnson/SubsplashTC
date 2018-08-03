@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 // TODO: check API for specifics on content Schema tags
 const contentSchema = new mongoose.Schema({
@@ -12,6 +12,6 @@ const contentSchema = new mongoose.Schema({
     published_at: String,
 });
 
-const Content = mongoose.model('Content', contentSchema);
+// const Content = mongoose.model('Content', contentSchema);
 
 module.exports = Content;
