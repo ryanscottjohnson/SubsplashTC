@@ -4,7 +4,7 @@ const jws = require('jsonwebtoken');
 
 function bearerAuth(req, res, next) {
     console.log('bearer function working');
-    let authHeader = req.header.authorization;
+    let authHeader = req.get('Authorization');
     var token = authHeader.split('Bearer ')[1];
     console.log('token', token);
 

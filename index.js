@@ -24,7 +24,7 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/api', (req, res) => {
+app.get('/api', bearerAuth, (req, res) => {
     console.log('GOT');
     const url = `https://challenge.subsplash.net`;
     superAgent.get(url)
@@ -34,12 +34,6 @@ app.get('/api', (req, res) => {
     })
     .catch(result => console.error('error', result.status, result.headers, result.body))
 });
-
-// app.post('/api/posts', (req, res) => {
-//     res.json({
-//         message: 'Nailed it'
-//     });
-// });
 
 app.listen(process.env.PORT, () => {
     console.log(`listening on http://localhost:${process.env.PORT}`);
