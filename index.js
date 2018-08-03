@@ -17,18 +17,16 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-
-app.get('/api', (req, res) => {
-    // res.json('index.html');
-    res.json({
-        message: 'Welsome to the API'
-    });
+app.get('/', (req, res) => {
+    res.sendFile('index.html');
+    // res.json({
+    //     message: 'Greetings'
+    // });
 });
 
 app.post('/api/posts', (req, res) => {
     res.json({
-        message: 'Post created...'
+        message: 'Nailed it'
     });
 });
 
