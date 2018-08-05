@@ -19,10 +19,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/api', bearerAuth, (req, res) => {
-    console.log('GOT');
+    console.log('GOT: ' );
     const url = `https://challenge.subsplash.net`;
     superAgent.get(url)
     .then(function (result){
+        console.log("result: ", result.body);
         res.send(result.body);
         // res.sendFile('index.html');
     })
