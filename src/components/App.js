@@ -8,7 +8,7 @@ class App extends React.Component {
     constructor(props) {
     super(props);
     // const results = appReq.getVideos();
-    const results = mockData.getVideo();
+    const results = mockData.getVideos();
   }
   render(){
     return <VideoTable results={this.results} />

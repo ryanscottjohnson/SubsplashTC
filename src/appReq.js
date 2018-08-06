@@ -256,17 +256,17 @@ const appReq = {
       url: url,
       method: "GET",
       headers: {
-        "X-Sap-Auth": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlN2U5NDhlOC0xMzA3LTRhNDktOTkzZS1jZDQwMGIyNDBiNzMiLCJpYXQiOjE1MTc0NDMyMDB9.cCnoZDiDA1wZDw2jrbRgpwWvtA5nHHaDaUKLl1fAXA',
+        "X-Sap-Auth": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlN2U5NDhlOC0xMzA3LTRhNDktOTkzZS1jZDQwMGIyNDBiNzMiLCJpYXQiOjE1MTc0NDMyMDB9.cCnoZDiDA1wZDw2jrbRgpwWvtA5nHHaDaUKLl1fAXA",
       },
     })
-      .then((resp) => {
-        console.log(resp);
-        // make a call to the youtube api with the resp items to get the necessary data.
-        // send this to youtube resp._embedded.media_items.id
-        return resp.data;
+      .then((res) => {
+        console.log(res);
+        // make a call to the youtube api with the res items to get the necessary data.
+        // send this to youtube res._embedded.media_items.id
+        return res.data;
       })
-      .catch((resp) => {
-        return resp;
+      .catch((res) => {
+        return res;
 
       });
   }
