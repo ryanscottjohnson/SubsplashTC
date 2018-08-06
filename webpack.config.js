@@ -1,10 +1,6 @@
-const webpack = require('webpack');
 const path = require('path');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const stats = {
   assets: true,
@@ -22,26 +18,23 @@ const stats = {
 };
 
 module.exports = function() {
+
   const isProd = process.env && process.env.NODE_ENV === 'production';
   const nodeEnv = isProd ? 'production' : 'development';
-  console.log('isProd', isProd);
-  
-  const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      async: true,
-      children: true,
-      minChunks: 2,
-    }),
 
+  const plugins = [
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   async: true,
+    //   children: true,
+    //   minChunks: 2,
+    // }),
+    new webpack.LoaderOptionsPlugin({ options: {} }),
     // setting production environment will strip out
     // some of the development code from the app
     // and libraries
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
     }),
-
-    // create css bundle
-    // new ExtractTextPlugin('style-[contenthash:8].css'),
 
     // create index.html
     new HtmlWebpackPlugin({
@@ -62,16 +55,8 @@ module.exports = function() {
         minifyURLs: true,
       },
     }),
-
-    // make sure script tags are async to avoid blocking html render
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: 'async',
-    // }),
-
-    // preload chunks
-    // new PreloadWebpackPlugin(),
   ];
-  
+
   if(isProd) {
     plugins.push(
       // minify remove some of the dead code
@@ -81,26 +66,43 @@ module.exports = function() {
         }
       })
     );
-  } else {
-
   }
-  console.log(new UglifyJSPlugin());
 
   return {
-    // entry: ['./vendor/formdata-polyfill/formdata.js', './src/index.js'],
-    entry: ['./src/index.js'],
+    mode: 'development',
+    
+    entry: [
+      './src/index.js'
+    ],
     devtool: '#source-map',
+    // devServer: {
+    //   host: "rcds.worldvision.org",
+    //   port: 8080,
+    //   https: false
+    // },
     output: {
-      path: path.resolve('dist'),
-      filename: 'subsplash_bundle.js'
+      filename: '[name].bundle.min.js',
+      path: path.resolve(__dirname, 'dist'),
     },
     module: {
-      loaders: [
-        { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-        { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+      rules: [
+        // {
+        //   enforce: "pre",
+        //   test: /\.(js|jsx)$/,
+        //   include: [path.resolve(__dirname, "src")],
+        //   exclude: /node_modules/,
+        //   loader: [ "eslint-loader" ]
+        // },
+        {
+          test: /\.(js|jsx)$/,
+          include: [path.resolve(__dirname, "src")],
+          exclude: /node_modules/,
+          loader: [ "babel-loader" ]
+        },
+        
       ]
     },
     plugins: plugins,
     stats: stats,
-  }
-}
+  };
+};
