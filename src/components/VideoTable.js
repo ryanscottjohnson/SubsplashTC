@@ -34,12 +34,12 @@ renderVideo (data) {
          <tbody>
            {this.renderVideo(result)}
            <tr>
-             {/* <td>{result}</td>
-             <td>{id}</td>
-             <td>{title}</td>
-             <td>{youtube_url}</td>
-             <td>{published_at}</td>
-             <td>{reach}</td> */}
+             {/* <td>{result}</td> */}
+             {/* <td>{id}</td> */}
+             {/* <td>{title}</td> */}
+             {/* <td>{youtube_url}</td> */}
+             {/* <td>{published_at}</td> */}
+             {/* <td>{reach}</td> */}
 
 
 
