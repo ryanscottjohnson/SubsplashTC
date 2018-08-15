@@ -1,0 +1,19 @@
+{
+  "name": "subsplashtc",
+  "version": "1.0.0",
+  "description": "Use the Subsplash API and YouTube API to generate an HTML table of videos matching the specified parameters.",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanscottjohnson/SubsplashTC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "say-hello": "./cli.js"
+  },
+  "homepage": "https://github.com/ryanscottjohnson/SubsplashTC#readme"
+}
